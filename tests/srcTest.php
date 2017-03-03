@@ -34,7 +34,17 @@ class StoreTest extends PHPUnit_Framework_TestCase{
         $result = $test_store->getPricing();
 
         $this->assertEquals($pricing, $result);
+    }
 
+    function test_getLocation() {
+        $name = 'Doot Locker';
+        $pricing = 7;
+        $location = 'spooky dooty lane';
+        $test_store = new Store($name, $pricing, $location);
+
+        $result = $test_store->getLocation();
+
+        $this->assertEquals($location, $result);
     }
 }
 
