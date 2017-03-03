@@ -12,7 +12,7 @@ $DB = new PDO($server, $username, $password);
 class StoreTest extends PHPUnit_Framework_TestCase{
     protected function teardown()
     {
-        // Store::deleteAll();
+        Store::deleteAll();
     }
     function test_getName() {
         $name = 'Doot Locker';
@@ -56,7 +56,7 @@ class StoreTest extends PHPUnit_Framework_TestCase{
         $test_store->save();
         $result = Store::getAll();
 
-        $this->assertEquals($location, $result);
+        $this->assertEquals([$test_store], $result);
 
     }
 }
