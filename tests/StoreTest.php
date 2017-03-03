@@ -205,7 +205,7 @@ class StoreTest extends PHPUnit_Framework_TestCase{
         $test_store->addBrand($test_brand);
         $result = $test_store->getBrands();
 
-        $this->assertEquals([$test_brand2], $result);
+        $this->assertEquals([$test_brand2, $test_brand], $result);
     }
 }
 
