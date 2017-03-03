@@ -18,6 +18,13 @@ _{This is a detailed description of your application. Its purpose and usage.  Gi
 
 _{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
+## Backup SQL Commands
+* CREATE DATABASE shoes;
+* CREATE TABLE stores (id serial primary key, name varchar(255), pricing int, location varchar(255));
+* CREATE TABLE brands (id serial primary key, name varchar(255), pricing int);
+* CREATE TABLE stores_brands (id serial primary key, store_id int, brand_id int);
+
+
 ## Known Bugs
 
 _{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
