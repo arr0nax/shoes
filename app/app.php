@@ -53,7 +53,13 @@
         return $app['twig']->render('store.html.twig', ['store'=>$store,'brands'=>$brands]);
     });
 
-    $app->patch('/store/{id}/edit', function($id) use($app) {
+    $app->patch('/store/{id}/editstore', function($id) use($app) {
+        $store = Store::find($id);
+        $store->update($_POST['name'], $_POST['pricing'], $_POST['location']);
+        return $app->redirect('/store/'.$id);
+    });
+
+    $app->patch('/store/{id}/editbrands', function($id) use($app) {
         $store = Store::find($id);
         $store->deleteBrands();
         foreach($_POST['brands'] as $brand_id){

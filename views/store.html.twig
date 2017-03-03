@@ -14,8 +14,25 @@
                 <li>{{brand.getName}}</li>
             {% endfor %}
         </ul>
+        <h3>Edit this Store</h3>
+        <form class="" action="/store/{{store.getId}}/editstore" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <label for="name">Name: </label>
+            <input type="text" name="name" value="{{store.getName}}">
+            <label for="pricing">Pricing: </label>
+            <select class="" name="pricing">
+                <option {% if store.getPricing == 1 %} selected {% endif %} value='1'>CHEEP CHEEP🐣</option>
+                <option {% if store.getPricing == 2 %} selected {% endif %} value='2'>Wow, a deal indeed</option>
+                <option {% if store.getPricing == 3 %} selected {% endif %} value='3'>Cheaper on amazon</option>
+                <option {% if store.getPricing == 4 %} selected {% endif %} value='4'>only if you're buying 😘</option>
+                <option {% if store.getPricing == 5 %} selected {% endif %} value='5'>wtf who buys this</option>
+            </select>
+            <label for="location">Location: </label>
+            <input type="text" name="location" value="{{store.getLocation}}">
+            <button type="submit" name="button">Edit It 👞</button>
+        </form>
         <h3>Edit Brands</h3>
-        <form class="" action="/store/{{store.getId}}/edit" method="post">
+        <form class="" action="/store/{{store.getId}}/editbrands" method="post">
             <input type="hidden" name="_method" value="patch">
             {% for brand in brands %}
                 {% if brand in store.getBrands %}
@@ -30,5 +47,6 @@
             <input type="hidden" name="_method" value="delete">
             <button type="submit" name="button">DELETE THIS STORE</button>
         </form>
+        <a href="/"><h3>HOME</h3></a>
     </body>
 </html>
