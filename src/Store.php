@@ -1,0 +1,7 @@
+s<?php
+    class Store {
+
+    }
+
+
+?>
