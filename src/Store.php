@@ -53,9 +53,16 @@ s<?php
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        static function find()
+        static function find($search_id)
         {
-            
+            $query = $GLOBALS['DB']->query("SELECT * FROM stores WHERE id = {$search_id};");
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $name = $result['name'];
+            $pricing = $result['pricing'];
+            $location = $result['location'];
+            $id = $result['id'];
+            $new_store = new Store($name, $pricing, $location, $id);
+            return $new_store;
         }
 
         static function getAll()

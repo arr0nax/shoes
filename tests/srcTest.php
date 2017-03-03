@@ -105,7 +105,7 @@ class StoreTest extends PHPUnit_Framework_TestCase{
         $test_store2->save();
         $result = Store::find($test_store2->getId());
 
-        $this->assertEquals([$test_store2], $result);
+        $this->assertEquals($test_store2, $result);
 
     }
 
