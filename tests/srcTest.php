@@ -106,7 +106,26 @@ class StoreTest extends PHPUnit_Framework_TestCase{
         $result = Store::find($test_store2->getId());
 
         $this->assertEquals($test_store2, $result);
+    }
 
+    function test_update() {
+        $name = 'Doot Locker';
+        $pricing = 7;
+        $location = 'spooky dooty lane';
+        $test_store = new Store($name, $pricing, $location);
+
+        $name2 = 'Scareless Shoe Src';
+        $pricing2 = 4;
+        $location2 = '35 spook me';
+
+        $test_store->save();
+        $test_store->update($name2, $pricing2, $location2);
+        $test_store->setName($name2);
+        $test_store->setPricing($pricing2);
+        $test_store->setLocation($location2);
+        $result = Store::getAll();
+
+        $this->assertEquals([$test_store], $result);
     }
 
 
