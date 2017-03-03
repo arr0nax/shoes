@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h2>{{store.getName}}</h2>
+        <h3>{{store.getLocation}}</h3>
+        <h3>Price Level: {{store.getPricing}}/5</h3>
+        <h3>Carried Brands: </h3>
+        <ul>
+            {% for brand in store.getBrands %}
+                <li>{{brand.getName}}</li>
+            {% endfor %}
+        </ul>
+        <h3>Edit Brands</h3>
+        <form class="" action="/store/{{store.getId}}/edit" method="post">
+            <input type="hidden" name="_method" value="patch">
+            {% for brand in brands %}
+                {% if brand in store.getBrands %}
+                <input type="checkbox" name="brands[]" value="{{brand.getId}}" checked="true">{{brand.getName}}<br>
+                {% else %}
+                <input type="checkbox" name="brands[]" value="{{brand.getId}}">{{brand.getName}}<br>
+                {% endif %}
+            {% endfor %}
+            <button type="submit" name="button">Edit Brands</button>
+        </form>
+    </body>
+</html>

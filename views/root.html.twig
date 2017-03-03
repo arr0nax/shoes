@@ -9,7 +9,7 @@
         <ul>
             {% if stores is not empty %}
             {% for store in stores %}
-                <li>{{store.getName}}</li>
+                <a href="/store/{{store.getId}}"><li>{{store.getName}}</li></a>
             {% endfor %}
             {% endif %}
         </ul>
@@ -33,7 +33,7 @@
         <ul>
             {% if brands is not empty %}
             {% for brand in brands %}
-                <li>{{brand.getName}}</li>
+                <a href="/brand/{{brand.getId}}"><li>{{brand.getName}}</li></a>
             {% endfor %}
             {% endif %}
         </ul>

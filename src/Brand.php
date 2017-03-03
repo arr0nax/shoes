@@ -41,6 +41,12 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE brand_id = {$this->getId()};");
+        }
+
         function addStore($store)
         {
             $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES ({$store->getId()}, {$this->getId()});");
@@ -62,6 +68,23 @@
             return $stores;
 
         }
+
+        function deleteStores()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE brand_id = {$this->getId()};");
+        }
+
+        static function find($search_id)
+        {
+            $query = $GLOBALS['DB']->query("SELECT * FROM brands WHERE id = {$search_id};");
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $name = $result['name'];
+            $pricing = $result['pricing'];
+            $id = $result['id'];
+            $new_brand = new Brand($name, $pricing, $id);
+            return $new_brand;
+        }
+
 
         static function getAll()
         {

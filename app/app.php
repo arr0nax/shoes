@@ -47,6 +47,44 @@
         return $app->redirect('/');
     });
 
+    $app->get('/store/{id}', function($id) use($app) {
+        $store = Store::find($id);
+        $brands = Brand::getAll();
+        return $app['twig']->render('store.html.twig', ['store'=>$store,'brands'=>$brands]);
+    });
+
+    $app->patch('/store/{id}/edit', function($id) use($app) {
+        $store = Store::find($id);
+        $store->deleteBrands();
+        foreach($_POST['brands'] as $brand_id){
+            $new_brand = Brand::find($brand_id);
+            $store->addBrand($new_brand);
+        }
+        return $app->redirect('/store/'.$id);
+    });
+
+    $app->get('/brand/{id}', function($id) use($app) {
+        $brand = Brand::find($id);
+        $stores = Store::getAll();
+        return $app['twig']->render('brand.html.twig', ['brand'=>$brand,'stores'=>$stores]);
+    });
+
+    $app->patch('/brand/{id}/edit', function($id) use($app) {
+        $brand = Brand::find($id);
+        $brand->deleteStores();
+        foreach($_POST['stores'] as $store_id){
+            $new_store = Store::find($store_id);
+            $brand->addStore($new_store);
+        }
+        return $app->redirect('/brand/'.$id);
+    });
+
+    $app->delete('/brand/{id}/delete', function($id) use($app) {
+        $brand = Brand::find($id);
+        $brand->delete();
+        return $app->redirect('/');
+    });
+
 
     return $app;
 ?>
