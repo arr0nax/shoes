@@ -128,7 +128,24 @@ class StoreTest extends PHPUnit_Framework_TestCase{
         $this->assertEquals([$test_store], $result);
     }
 
+    function test_delete() {
+        $name = 'Doot Locker';
+        $pricing = 7;
+        $location = 'spooky dooty lane';
+        $test_store = new Store($name, $pricing, $location);
 
+        $name2 = 'Scareless Shoe Src';
+        $pricing2 = 4;
+        $location2 = '35 spook me';
+        $test_store2 = new Store($name2, $pricing2, $location2);
+
+        $test_store->save();
+        $test_store2->save();
+        $test_store->delete();
+        $result = Store::getAll();
+
+        $this->assertEquals([$test_store2], $result);
+    }
 }
 
 

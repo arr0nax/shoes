@@ -58,6 +58,11 @@ s<?php
             $GLOBALS['DB']->exec("UPDATE stores SET name = '{$name}', pricing = {$pricing}, location = '{$location}' WHERE id = {$this->getId()};");
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()}");
+        }
+
         static function find($search_id)
         {
             $query = $GLOBALS['DB']->query("SELECT * FROM stores WHERE id = {$search_id};");
