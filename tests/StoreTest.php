@@ -178,7 +178,7 @@ class StoreTest extends PHPUnit_Framework_TestCase{
     }
 
 
-    function test_getStores() {
+    function test_getBrands() {
         $name = 'Spooky';
         $pricing = 9;
         $test_brand = new Brand($name, $pricing);
@@ -206,6 +206,37 @@ class StoreTest extends PHPUnit_Framework_TestCase{
         $result = $test_store->getBrands();
 
         $this->assertEquals([$test_brand2, $test_brand], $result);
+    }
+
+    function test_deleteBrands() {
+        $name = 'Spooky';
+        $pricing = 9;
+        $test_brand = new Brand($name, $pricing);
+
+        $name2 = 'Acreepas';
+        $pricing2 = 4;
+        $test_brand2 = new Brand($name2, $pricing2);
+
+        $name = 'Doot Locker';
+        $pricing = 7;
+        $location = 'spooky dooty lane';
+        $test_store = new Store($name, $pricing, $location);
+
+        $name2 = 'Scareless Shoe Src';
+        $pricing2 = 4;
+        $location2 = '35 spook me';
+        $test_store2 = new Store($name2, $pricing2, $location2);
+
+        $test_brand->save();
+        $test_brand2->save();
+        $test_store->save();
+        $test_store2->save();
+        $test_store->addBrand($test_brand2);
+        $test_store->addBrand($test_brand);
+        $test_store->deleteBrands();
+        $result = $test_store->getBrands();
+
+        $this->assertEquals([], $result);
     }
 }
 

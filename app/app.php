@@ -63,6 +63,13 @@
         return $app->redirect('/store/'.$id);
     });
 
+    $app->delete('/store/{id}/delete', function($id) use($app) {
+        $store = Store::find($id);
+        $store->delete();
+        return $app->redirect('/');
+    });
+
+
     $app->get('/brand/{id}', function($id) use($app) {
         $brand = Brand::find($id);
         $stores = Store::getAll();

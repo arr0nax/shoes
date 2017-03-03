@@ -26,5 +26,9 @@
             {% endfor %}
             <button type="submit" name="button">Edit Brands</button>
         </form>
+        <form class="" action="/store/{{store.getId}}/delete" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" name="button">DELETE THIS STORE</button>
+        </form>
     </body>
 </html>
