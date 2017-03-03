@@ -53,6 +53,11 @@ s<?php
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        static function find()
+        {
+            
+        }
+
         static function getAll()
         {
             $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
