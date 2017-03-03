@@ -1,4 +1,4 @@
-s<?php
+<?php
     class Store {
         private $name;
         private $pricing;

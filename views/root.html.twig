@@ -5,6 +5,59 @@
         <title></title>
     </head>
     <body>
-        {{result}}
+        <h2>Stores</h2>
+        <ul>
+            {% if stores is not empty %}
+            {% for store in stores %}
+                <li>{{store.getName}}</li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+        <form class="" action="/addstore" method="post">
+            <h2>Add A Store</h2>
+            <label for="name">Name: </label>
+            <input type="text" name="name" value="">
+            <label for="pricing">Pricing: </label>
+            <select class="" name="pricing">
+                <option value='1'>CHEEP CHEEP🐣</option>
+                <option value='2'>Wow, a deal indeed</option>
+                <option value='3'>Cheaper on amazon</option>
+                <option value='4'>only if you're buying 😘</option>
+                <option value='5'>wtf who buys this</option>
+            </select>
+            <label for="location">Location: </label>
+            <input type="text" name="location" value="">
+            <button type="submit" name="button">Add It 👞</button>
+        </form>
+        <h2>Brands</h2>
+        <ul>
+            {% if brands is not empty %}
+            {% for brand in brands %}
+                <li>{{brand.getName}}</li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+        <form class="" action="/addbrand" method="post">
+            <h2>Add A Brand</h2>
+            <label for="name">Name: </label>
+            <input type="text" name="name" value="">
+            <label for="pricing">Pricing: </label>
+            <select class="" name="pricing">
+                <option value='1'>CHEEP CHEEP🐣</option>
+                <option value='2'>Wow, a deal indeed</option>
+                <option value='3'>Cheaper on amazon</option>
+                <option value='4'>only if you're buying 😘</option>
+                <option value='5'>wtf who buys this</option>
+            </select>
+            <button type="submit" name="button">Add It 👞</button>
+        </form>
+        <form class="" action="deletestores" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" name="button">💀DELETE ALL STORES💀</button>
+        </form>
+        <form class="" action="deletebrands" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" name="button">💀DELETE ALL BRANDS💀</button>
+        </form>
     </body>
 </html>

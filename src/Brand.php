@@ -1,4 +1,4 @@
-s<?php
+<?php
     class Brand {
         private $name;
         private $pricing;
