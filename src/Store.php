@@ -32,6 +32,16 @@ s<?php
             $this->pricing = $pricing;
         }
 
+        function getLocation()
+        {
+            return $this->location;
+        }
+
+        function setLocation($location)
+        {
+            $this->location = $location;
+        }
+
     }
 
 
