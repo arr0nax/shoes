@@ -21,7 +21,17 @@ s<?php
         {
             $this->name = $name;
         }
-        
+
+        function getPricing()
+        {
+            return $this->pricing;
+        }
+
+        function setPricing($pricing)
+        {
+            $this->pricing = $pricing;
+        }
+
     }
 
 
